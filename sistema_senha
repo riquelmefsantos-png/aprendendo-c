@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#define S 18
+
+// strcpy(srt1, srt2); copia o conteudo da srt2 para a srt1
+// strcat(srt1, srt2); une o conteudo da srt1 e srt2 dentro dq srt1
+// strlen(str); retorna o tamanho da string
+// strcmp(srt1, srt2); compara as strings, se forem iguais retorna 0
+
+int main (){
+	char senha[S];
+	char sencfm[S];
+	int c;
+	int t = 0;
+	
+	do {
+		printf("Crie uma nova senha forte (mais de 6 digitos): ");
+	fgets(senha, S, stdin);
+	if (strlen(senha) < 6){
+		printf("Senha muito curta, digite uma nova senha:\n");
+	} else {
+		printf("Confirme senha: ");
+			fgets(sencfm, S, stdin);
+			c = strcmp(senha, sencfm);
+			if (c != 0){
+				printf("Senhas nao sao iguais.\n");
+			}
+	}
+	} while (c != 0);
+	
+	printf("Senha cadastrada com sucesso!\n");
+	
+	do {
+		printf("Digite a senha: ");
+		fgets(sencfm, S, stdin);
+		if (strcmp (senha, sencfm) != 0){
+			printf("Senha errada! %d de 3\n", t + 1);
+			t++;
+			if (t == 3){
+				printf("Numero de tentativas excedidas... fechando progama\n");
+				return 0;
+			}
+		}
+	} while (strcmp (senha, sencfm) != 0);
+	
+	printf("Acesso garantido.\n");
+	
+return 0;
+}
