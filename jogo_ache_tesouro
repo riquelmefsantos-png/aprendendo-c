@@ -1,0 +1,99 @@
+#include <stdio.h>
+#define MAX 4
+int main (){
+	int x = 0;
+	int y = 0;
+	int tesouro_x = 4;
+	int tesouro_y = 2;
+	int tem_pa = 0;
+	int pa_x = 0;
+	int pa_y = 4;
+	char l;
+	
+do{
+	printf("\n----------------------------------\nAche o tesouro!\n----------------------------------\n");
+	
+   for (int i = MAX; i >= 0; i--) {
+            for (int j = 0; j <= MAX; j++) {
+                if (i == x && j == y) {
+                    printf("[@] "); 
+                } 
+                else {
+                    printf("[ ] ");
+                }
+            }
+            printf("\n");
+        }
+        printf("\nLegenda: [@] = Voce | [ ] = Vazio\n");
+        printf("Posicao atual: [%d, %d]\n\n", x, y);
+        
+    if(x == pa_x && y == pa_y && tem_pa == 0){
+        printf("Voce achou uma pa!\n");
+        tem_pa = 1;
+    }
+        
+	if (x == tesouro_x && y == tesouro_y){
+	   	if (tem_pa == 1){
+    	printf("Voce cavou o chao e achou o tesouro! Parabens!\n");
+    		return 0;
+	   	} else  { 
+	   	printf("Voce achou uma marca estranha no chao... voce precisa achar algo para cavar\n");
+	   	}
+    }
+	printf("Diga uma acao (w, a, s, d) [escreva e para sair]:");
+	scanf(" %c", &l);
+    
+switch (l){
+	case 'w':
+	case 'W':
+	if (x == MAX){
+		printf("Nao e possivel ir nessa direcao!\n");
+	} else { 
+	printf ("Andando...\n");
+	x++;
+	}
+	break;
+	
+	case 'a':
+	case 'A':
+	if (y == 0){
+		printf("Nao e possivel ir nessa direcao!\n");
+	} else { 
+	printf ("Andando...\n");
+	y--;
+	}
+	break;
+	
+	case 's':
+	case 'S':
+	if (x == 0){
+		printf("Nao e possivel ir nessa direcao!\n");
+	} else { 
+	printf ("Andando...\n");
+	x--;
+	}
+	break;
+	
+	case 'd':
+	case 'D':
+	if (y == MAX){
+		printf("Nao e possivel ir nessa direcao!\n");
+	} else { 
+	printf ("Andando...\n");
+	y++;
+	}
+	break;
+	
+	case 'e':
+	case 'E':
+	printf("Fechando programa... O tesouro nao foi encontrado...");
+	break;
+	
+	default:
+    printf("direcao invalida!\n");
+    break;
+}
+} while (l != 'e' && l != 'E');
+
+return 0;
+}
