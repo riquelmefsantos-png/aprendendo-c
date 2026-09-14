@@ -1,0 +1,49 @@
+#include <stdio.h>
+int main (){
+	float caixa = 0;
+	float v;
+	int op;
+	
+	
+	do {
+		printf("\n----------------------------------\nEscolha uma opcao:\n1 ——— Ver saldo do caixa\n2 ——— Fazer deposito ao caixa\n3 ——— Fazer saque do caixa\n0 ——— Encerrar programa\n----------------------------------\n");
+		scanf("%d", &op);
+		
+		switch (op){
+			case 1:
+			printf("Caixa atual: %.2f", caixa);
+			break;
+			
+			case 2:
+			printf("Quantidade do deposito: ");
+			scanf("%f",&v);
+			if ( v < 0){
+				printf("Valor de deposito invalido!\n");
+			} else {
+				caixa += v;
+			}
+			break;
+			
+			case 3:
+						printf("Quantidade de saque: ");
+			scanf("%f",&v);
+			if ( v < 0 || v > caixa){
+				printf("Valor de saque invalido!\n");
+			} else {
+				caixa -= v;
+			}
+			break;
+			
+			case 0:
+			printf("Saindo do programa... ");
+			break;
+			
+			default:
+    printf("Opção inválida! Escolha um número de 0 a 3.\n");
+    break;
+			
+		}
+	} while (op != 0);
+	printf("Programa finalizado!");
+return 0;
+}
